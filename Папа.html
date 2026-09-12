@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ЛипФасад48 — МДФ-панели для стен</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-base:#15120d;
+    --bg-alt:#1c170f;
+    --bg-alt-2:#211a10;
+    --walnut:#7a4b2a;
+    --walnut-light:#a4703f;
+    --walnut-dark:#4a2c18;
+    --oat:#e4d9c4;
+    --oat-dim:#c9bc9f;
+    --text:#f3ecdf;
+    --text-dim:#b6ac97;
+    --brass:#c99a4a;
+    --sage:#6b7a58;
+    --hair:rgba(228,217,196,0.14);
+    --radius-s:2px;
+    --radius-m:4px;
+    --maxw:1180px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg-base);
+    color:var(--text);
+    font-family:'Golos Text', sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'PT Serif', serif;
+    font-weight:700;
+    margin:0;
+    color:var(--text);
+  }
+  p{margin:0;}
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 32px;}
+  @media (max-width:640px){ .wrap{padding:0 20px;} }
+
+  :focus-visible{outline:2px solid var(--brass); outline-offset:3px;}
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(21,18,13,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--hair);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 0;
+  }
+  .logo{
+    font-family:'PT Serif', serif;
+    font-size:22px;
+    font-weight:700;
+    letter-spacing:0.5px;
+  }
+  .logo span{color:var(--brass);}
+  .nav-links{
+    display:flex; gap:36px; list-style:none; margin:0; padding:0;
+    font-size:15px; color:var(--oat-dim);
+  }
+  .nav-links a{text-decoration:none; transition:color .2s ease;}
+  .nav-links a:hover{color:var(--text);}
+  .nav-cta{
+    display:inline-block;
+    padding:11px 22px;
+    background:var(--brass);
+    color:#1c1305;
+    font-weight:600;
+    font-size:14.5px;
+    border-radius:var(--radius-s);
+    text-decoration:none;
+    transition:background .2s ease, transform .15s ease;
+  }
+  .nav-cta:hover{background:#dcae5e;}
+  .nav-toggle{display:none;}
+  @media (max-width:860px){
+    .nav-links{display:none;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:88px 0 96px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:56px;
+    align-items:center;
+  }
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr; gap:48px;}
+  }
+  .eyebrow{
+    font-size:14px;
+    color:var(--brass);
+    margin-bottom:18px;
+    font-weight:500;
+  }
+  .hero h1{
+    font-size:clamp(34px, 4.6vw, 54px);
+    line-height:1.1;
+    max-width:15ch;
+    opacity:0;
+    transform:translateY(14px);
+    animation:riseIn .7s ease forwards;
+  }
+  .hero p.lede{
+    margin-top:22px;
+    max-width:46ch;
+    font-size:17.5px;
+    color:var(--oat-dim);
+    opacity:0;
+    transform:translateY(14px);
+    animation:riseIn .7s ease .12s forwards;
+  }
+  @keyframes riseIn{ to{opacity:1; transform:translateY(0);} }
+  @media (prefers-reduced-motion:reduce){
+    .hero h1, .hero p.lede{animation:none; opacity:1; transform:none;}
+  }
+  .hero-actions{
+    display:flex; gap:16px; margin-top:34px; flex-wrap:wrap;
+  }
+  .btn-primary{
+    padding:14px 26px;
+    background:var(--brass);
+    color:#1c1305;
+    font-weight:600;
+    font-size:15px;
+    border-radius:var(--radius-s);
+    text-decoration:none;
+    border:none;
+    cursor:pointer;
+    transition:background .2s ease;
+  }
+  .btn-primary:hover{background:#dcae5e;}
+  .btn-secondary{
+    padding:14px 26px;
+    background:transparent;
+    color:var(--text);
+    font-weight:500;
+    font-size:15px;
+    border-radius:var(--radius-s);
+    text-decoration:none;
+    border:1px solid var(--hair);
+    transition:border-color .2s ease, background .2s ease;
+  }
+  .btn-secondary:hover{border-color:var(--oat-dim); background:rgba(228,217,196,0.05);}
+
+  .hero-stats{
+    display:flex; gap:36px; margin-top:48px; flex-wrap:wrap;
+  }
+  .hero-stats div{border-left:1px solid var(--hair); padding-left:16px;}
+  .hero-stats b{display:block; font-family:'PT Serif',serif; font-size:26px; font-weight:700;}
+  .hero-stats span{font-size:13.5px; color:var(--text-dim);}
+
+  /* slat visual */
+  .slat-frame{
+    position:relative;
+    border-radius:var(--radius-m);
+    padding:18px;
+    background:linear-gradient(155deg,#0f0c08,#1a140d);
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.6), inset 0 0 0 1px var(--hair);
+  }
+  .slat-panel{
+    display:flex;
+    height:380px;
+    border-radius:2px;
+    overflow:hidden;
+    transform:perspective(900px) rotateY(-6deg);
+  }
+  .slat{
+    flex:1;
+    position:relative;
+  }
+  .slat + .slat{margin-left:3px;}
+  .slat:nth-child(1){background:linear-gradient(180deg,#8a5a34,#5e3a20);}
+  .slat:nth-child(2){background:linear-gradient(180deg,#976338,#68411f);}
+  .slat:nth-child(3){background:linear-gradient(180deg,#7d5230,#4f301b);}
+  .slat:nth-child(4){background:linear-gradient(180deg,#a5713f,#754a24);}
+  .slat:nth-child(5){background:linear-gradient(180deg,#875733,#5a371e);}
+  .slat:nth-child(6){background:linear-gradient(180deg,#96632f,#6a441f);}
+  .slat:nth-child(7){background:linear-gradient(180deg,#7c5230,#4c2d18);}
+  .slat:nth-child(8){background:linear-gradient(180deg,#a06d3d,#6f4722);}
+  .slat::after{
+    content:'';
+    position:absolute; inset:0;
+    background:repeating-linear-gradient(180deg, rgba(0,0,0,0.08) 0px, rgba(0,0,0,0.08) 1px, transparent 1px, transparent 4px);
+    mix-blend-mode:multiply;
+    opacity:0.5;
+  }
+  .slat::before{
+    content:'';
+    position:absolute; left:0; top:0; bottom:0; width:2px;
+    background:rgba(0,0,0,0.35);
+  }
+  .slat-caption{
+    display:flex; justify-content:space-between;
+    margin-top:14px; font-size:13px; color:var(--text-dim);
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:88px 0;}
+  .section-alt{background:var(--bg-alt);}
+  .section-head{
+    max-width:640px;
+    margin-bottom:52px;
+  }
+  .section-head h2{
+    font-size:clamp(26px, 3vw, 36px);
+    line-height:1.2;
+  }
+  .section-head p{
+    margin-top:14px;
+    color:var(--text-dim);
+    font-size:16px;
+    max-width:52ch;
+  }
+
+  /* ---------- FEATURES ---------- */
+  .features{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--hair);
+    border:1px solid var(--hair);
+    border-radius:var(--radius-m);
+    overflow:hidden;
+  }
+  @media (max-width:760px){ .features{grid-template-columns:1fr;} }
+  .feature{
+    background:var(--bg-base);
+    padding:32px 28px;
+  }
+  .section-alt .feature{background:var(--bg-alt);}
+  .feature h3{
+    font-size:19px;
+    margin-bottom:10px;
+  }
+  .feature p{
+    color:var(--text-dim);
+    font-size:14.5px;
+  }
+  .feature .mark{
+    width:34px; height:34px;
+    border-radius:50%;
+    border:1px solid var(--brass);
+    color:var(--brass);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'PT Serif',serif; font-size:15px;
+    margin-bottom:20px;
+  }
+
+  /* ---------- PALETTE / SWATCHES ---------- */
+  .swatch-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:28px 24px;
+  }
+  @media (max-width:760px){ .swatch-grid{grid-template-columns:repeat(2,1fr);} }
+  .swatch{cursor:default;}
+  .swatch-chip{
+    height:108px;
+    border-radius:var(--radius-m);
+    margin-bottom:12px;
+    position:relative;
+    box-shadow:inset 0 0 0 1px rgba(0,0,0,0.25);
+  }
+  .swatch-chip::after{
+    content:'';
+    position:absolute; inset:0;
+    background:repeating-linear-gradient(115deg, rgba(0,0,0,0.06) 0 2px, transparent 2px 6px);
+    border-radius:inherit;
+  }
+  .swatch h3{font-size:15.5px; font-weight:700; font-family:'Golos Text',sans-serif;}
+  .swatch span{font-size:13px; color:var(--text-dim); display:block; margin-top:2px;}
+
+  /* ---------- PROCESS ---------- */
+  .process{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:0;
+  }
+  @media (max-width:760px){ .process{grid-template-columns:1fr; gap:36px;} }
+  .step{
+    padding:0 24px 0 0;
+    border-right:1px solid var(--hair);
+  }
+  .step:last-child{border-right:none;}
+  @media (max-width:760px){ .step{border-right:none; padding-right:0; border-bottom:1px solid var(--hair); padding-bottom:32px;} .step:last-child{border-bottom:none;padding-bottom:0;} }
+  .step-num{
+    font-family:'PT Serif',serif;
+    font-size:34px;
+    color:var(--walnut-light);
+    margin-bottom:14px;
+  }
+  .step h3{font-size:17.5px; margin-bottom:8px;}
+  .step p{color:var(--text-dim); font-size:14.5px;}
+
+  /* ---------- APPLICATIONS ---------- */
+  .apps{
+    display:grid;
+    grid-template-columns:1.3fr 1fr 1fr;
+    gap:20px;
+  }
+  @media (max-width:900px){ .apps{grid-template-columns:1fr; } }
+  .app-card{
+    border-radius:var(--radius-m);
+    padding:26px 24px;
+    min-height:220px;
+    display:flex; flex-direction:column; justify-content:flex-end;
+    position:relative;
+    overflow:hidden;
+  }
+  .app-card h3{font-size:19px; color:#fff; position:relative; z-index:2;}
+  .app-card p{font-size:13.5px; color:rgba(255,255,255,0.75); margin-top:6px; position:relative; z-index:2;}
+  .app-1{background:linear-gradient(160deg,#3c2a1c,#1c130c);}
+  .app-2{background:linear-gradient(160deg,#33362a,#181a13);}
+  .app-3{background:linear-gradient(160deg,#412d1e,#20140c);}
+  .app-card::before{
+    content:'';
+    position:absolute; right:-30px; top:-30px; width:140px; height:140px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(201,154,74,0.18), transparent 70%);
+  }
+
+  /* ---------- CTA / CONTACT ---------- */
+  .cta-block{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:56px;
+    align-items:start;
+  }
+  @media (max-width:860px){ .cta-block{grid-template-columns:1fr; gap:40px;} }
+  .cta-block h2{font-size:clamp(26px,3.2vw,38px); max-width:14ch; line-height:1.18;}
+  .cta-block .lede{color:var(--text-dim); margin-top:16px; max-width:40ch;}
+  .cta-list{margin-top:28px; display:flex; flex-direction:column; gap:12px;}
+  .cta-list div{display:flex; gap:12px; align-items:flex-start; font-size:14.5px; color:var(--oat-dim);}
+  .cta-list div::before{content:''; width:6px; height:6px; margin-top:7px; background:var(--brass); border-radius:50%; flex-shrink:0;}
+
+  form{
+    background:var(--bg-alt-2);
+    border:1px solid var(--hair);
+    border-radius:var(--radius-m);
+    padding:32px;
+    display:flex; flex-direction:column; gap:16px;
+  }
+  label{font-size:13.5px; color:var(--text-dim); display:block; margin-bottom:6px;}
+  input, textarea{
+    width:100%;
+    background:var(--bg-base);
+    border:1px solid var(--hair);
+    border-radius:var(--radius-s);
+    padding:12px 14px;
+    color:var(--text);
+    font-family:'Golos Text',sans-serif;
+    font-size:14.5px;
+  }
+  input:focus, textarea:focus{border-color:var(--brass); outline:none;}
+  textarea{resize:vertical; min-height:88px;}
+  .form-submit{
+    margin-top:6px;
+    padding:14px 26px;
+    background:var(--brass);
+    color:#1c1305;
+    font-weight:600;
+    font-size:15px;
+    border:none;
+    border-radius:var(--radius-s);
+    cursor:pointer;
+    transition:background .2s ease;
+  }
+  .form-submit:hover{background:#dcae5e;}
+  .form-note{font-size:12.5px; color:var(--text-dim); margin-top:2px;}
+  .form-success{
+    display:none;
+    padding:14px 16px;
+    background:rgba(107,122,88,0.18);
+    border:1px solid var(--sage);
+    border-radius:var(--radius-s);
+    font-size:14px;
+    color:#cfd8c1;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    border-top:1px solid var(--hair);
+    padding:44px 0;
+  }
+  .footer-grid{
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:24px;
+    font-size:14px; color:var(--text-dim);
+  }
+  .footer-grid a{text-decoration:none;}
+  .footer-grid a:hover{color:var(--text);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo">ЛипФасад48<span>.</span></div>
+    <ul class="nav-links">
+      <li><a href="#palette">Отделки</a></li>
+      <li><a href="#process">Как заказать</a></li>
+      <li><a href="#applications">Применение</a></li>
+      <li><a href="#contact">Контакты</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Заказать образцы</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Реечные и стеновые МДФ-панели</div>
+      <h1>Стены, которые выглядят как массив дерева, а собираются за один день</h1>
+      <p class="lede">Панели из влагостойкого МДФ с натуральным шпоном и точной геометрией паза. Делаем замер, расчёт материала и монтаж под ключ — по Москве и области.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Заказать образцы</a>
+        <a href="#palette" class="btn-secondary">Смотреть отделки</a>
+      </div>
+      <div class="hero-stats">
+        <div><b>32</b><span>цвета и текстуры</span></div>
+        <div><b>3–7 дней</b><span>от замера до монтажа</span></div>
+        <div><b>12 лет</b><span>гарантия на плиту</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="slat-frame">
+        <div class="slat-panel">
+          <div class="slat"></div><div class="slat"></div><div class="slat"></div><div class="slat"></div>
+          <div class="slat"></div><div class="slat"></div><div class="slat"></div><div class="slat"></div>
+        </div>
+        <div class="slat-caption">
+          <span>Орех тёмный, паз 3 мм</span>
+          <span>Панель 2800×600</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-alt">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Материал, с которым не нужно бояться сырости и сколов</h2>
+      <p>МДФ средней плотности плюс влагостойкая пропитка кромки — панель держит форму на кухне, в прихожей и в ванной, а не только в гостиной.</p>
+    </div>
+    <div class="features">
+      <div class="feature">
+        <div class="mark">1</div>
+        <h3>Влагостойкий сердечник</h3>
+        <p>Плотность плиты 750–800 кг/м³, кромка пропитана парафином — панель не разбухает от перепадов влажности.</p>
+      </div>
+      <div class="feature">
+        <div class="mark">2</div>
+        <h3>Скрытый монтаж</h3>
+        <p>Крепление на кляймеры без видимых саморезов и клея. Панель снимается для доступа к проводке.</p>
+      </div>
+      <div class="feature">
+        <div class="mark">3</div>
+        <h3>Звукопоглощение</h3>
+        <p>Рельефная реечная поверхность снижает эхо в комнате на 3–5 дБ по сравнению с гладкой стеной.</p>
+      </div>
+      <div class="feature">
+        <div class="mark">4</div>
+        <h3>Формальдегид класса E0.5</h3>
+        <p>Ниже норматива для жилых помещений почти вдвое — панели пригодны для детских и спален.</p>
+      </div>
+      <div class="feature">
+        <div class="mark">5</div>
+        <h3>Готовые радиусные углы</h3>
+        <p>Гибкие панели радиусом от 300 мм — для колонн, ниш и закруглённых простенков без стыков.</p>
+      </div>
+      <div class="feature">
+        <div class="mark">6</div>
+        <h3>Подсветка в комплекте</h3>
+        <p>Пазы уже рассчитаны под LED-ленту — заказываете с встроенной подсветкой без доработки на месте.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="palette">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Одна плита — десятки фактур</h2>
+      <p>Шпон, soft-touch плёнка и матовая эмаль на одной и той же основе. Можно скомбинировать оттенки в пределах одного заказа.</p>
+    </div>
+    <div class="swatch-grid">
+      <div class="swatch">
+        <div class="swatch-chip" style="background:linear-gradient(160deg,#9c7248,#6e4c2c);"></div>
+        <h3>Дуб натуральный</h3>
+        <span>Шпон, матовый лак</span>
+      </div>
+      <div class="swatch">
+        <div class="swatch-chip" style="background:linear-gradient(160deg,#5b3a24,#33200f);"></div>
+        <h3>Орех тёмный</h3>
+        <span>Шпон, открытая пора</span>
+      </div>
+      <div class="swatch">
+        <div class="swatch-chip" style="background:linear-gradient(160deg,#3a3a3a,#1b1b1b);"></div>
+        <h3>Графит</h3>
+        <span>Soft-touch плёнка</span>
+      </div>
+      <div class="swatch">
+        <div class="swatch-chip" style="background:linear-gradient(160deg,#cfc6b4,#a89d87);"></div>
+        <h3>Белый камень</h3>
+        <span>Матовая эмаль</span>
+      </div>
+      <div class="swatch">
+        <div class="swatch-chip" style="background:linear-gradient(160deg,#7d6a4f,#584931);"></div>
+        <h3>Беленый дуб</h3>
+        <span>Шпон, брашированный</span>
+      </div>
+      <div class="swatch">
+        <div class="swatch-chip" style="background:linear-gradient(160deg,#6b7a58,#48542f);"></div>
+        <h3>Оливковый</h3>
+        <span>Soft-touch плёнка</span>
+      </div>
+      <div class="swatch">
+        <div class="swatch-chip" style="background:linear-gradient(160deg,#2e2620,#161210);"></div>
+        <h3>Чёрный дуб</h3>
+        <span>Шпон, матовый лак</span>
+      </div>
+      <div class="swatch">
+        <div class="swatch-chip" style="background:linear-gradient(160deg,#b98b4c,#8a6431);"></div>
+        <h3>Медовый ясень</h3>
+        <span>Шпон, открытая пора</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="process" class="section-alt">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>От замера до готовой стены</h2>
+      <p>Один подрядчик на весь цикл — не нужно отдельно искать замерщика, цех и монтажников.</p>
+    </div>
+    <div class="process">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Замер</h3>
+        <p>Выезжаем в течение 2 дней, снимаем геометрию стен и намечаем раскладку панелей и розеток.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Раскладка и расчёт</h3>
+        <p>Присылаем схему раскроя и смету с учётом отходов — без скрытых доплат на монтаже.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Производство</h3>
+        <p>Панели режут и фрезеруют под ваш проём, кромки сразу пропитывают влагостойким составом.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h3>Монтаж</h3>
+        <p>Бригада устанавливает панели на скрытый каркас, подключает подсветку и убирает за собой.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="applications">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Куда чаще всего ставят</h2>
+      <p>Одна и та же система паз-гребень работает и на большой стене, и на нише в один погонный метр.</p>
+    </div>
+    <div class="apps">
+      <div class="app-card app-1">
+        <h3>Гостиная и медиастена</h3>
+        <p>Панель с подсветкой за телевизором, скрытая дверь в кладовую в том же ритме реек</p>
+      </div>
+      <div class="app-card app-2">
+        <h3>Прихожая</h3>
+        <p>Влагостойкий низ панели держит удар от обуви и зонтов, не отслаиваясь у пола</p>
+      </div>
+      <div class="app-card app-3">
+        <h3>Спальня и кабинет</h3>
+        <p>Изголовье и акцентная стена из одной партии материала — без видимой разницы тона</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-alt" id="contact-wrap">
+  <div class="wrap cta-block" id="contact">
+    <div>
+      <h2>Пришлите размеры стены — посчитаем материал за день</h2>
+      <p class="lede">Ответим с раскладкой панелей, расчётом и сроком монтажа. Образцы отделок привозим бесплатно в пределах МКАД.</p>
+      <div class="cta-list">
+        <div>Бесплатный выезд замерщика по Москве и области</div>
+        <div>Смета с раскладкой панелей и расходом на отходы</div>
+        <div>Монтаж под ключ или поставка панелей отдельно</div>
+      </div>
+    </div>
+    <form onsubmit="event.preventDefault(); document.getElementById('form-success').style.display='block'; this.reset();">
+      <div>
+        <label for="name">Имя</label>
+        <input id="name" type="text" placeholder="Как к вам обращаться" required>
+      </div>
+      <div>
+        <label for="phone">Телефон</label>
+        <input id="phone" type="tel" placeholder="+7 (___) ___-__-__" required>
+      </div>
+      <div>
+        <label for="msg">Что нужно посчитать</label>
+        <textarea id="msg" placeholder="Площадь стен, помещение, желаемая отделка"></textarea>
+      </div>
+      <button type="submit" class="form-submit">Отправить заявку</button>
+      <p class="form-note">Перезвоним в течение рабочего дня, спам не рассылаем.</p>
+      <div class="form-success" id="form-success">Заявка отправлена. Мы свяжемся с вами для уточнения деталей замера.</div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>© 2026 ЛипФасад48. Производство и монтаж МДФ-панелей.</div>
+    <div style="display:flex; gap:28px; flex-wrap:wrap;">
+      <a href="tel:+79508041490">+7 (950) 804-14-90</a>
+      <a href="mailto:lipfasad48@mail.ru">lipfasad48@mail.ru</a>
+      <a href="#applications">Портфолио</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
